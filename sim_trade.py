@@ -23,11 +23,8 @@ maximo_local = 0
 
 ############ Parametros externos para Simulação ############
 
-print("******* Simulação de Trade" "*******\n")
-print("Digite os parâmetros a serem usados\n")
-
-mes = input("Digite o mês (letras minisculas): ")
-par = "IOTUSD"+mes
+print("******* Simulador de Trade" "*******\n")
+print("Digite os parametros a serem usados\n")
 
 data_inicio = input("Digite a data de inicio (dd-mm-aaaa): ")
 hora_inicio = "00:00:00"
