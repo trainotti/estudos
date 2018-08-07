@@ -102,8 +102,12 @@ def valores_pares(par):
     stoch = calcula_estocastico(rsi)
     kvalores = calcula_kvalor(stoch)
     dvalores = calcula_dvalor(kvalores)
+    posicao = ''
+    if (kvalores[0] < 20 and dvalores[0] < 20):
+        posicao = 'Em posição de entrada'
+    
 
-    return ([par,candle[:7],rsi[:7],media_ganhos,media_perdas,stoch[:3],kvalores[:3],dvalores[0]])
+    return ([par,candle[:7],rsi[:7],media_ganhos,media_perdas,stoch[:3],kvalores[:3],dvalores[0],posicao])
 
 todosPares = []
 
@@ -114,12 +118,13 @@ for cadapar in pares:
 
 for i in range(0,len(todosPares)):
     if (todosPares[i][7] <= 200):
-        print ("Par",todosPares[i][0], "Valor do K:", todosPares[i][6][0], "Valor do D", todosPares[i][7])
+        print ("Par",todosPares[i][0], "Valor do K:", round(todosPares[i][6][0],2), "Valor do D", round(todosPares[i][7],2), todosPares[i][8])
 
 print("\n")
 agora = int(time.time())
 inicio = int(agora)//900*900
 xsegundos = inicio + 901 - agora
+
 
 
 while True:
@@ -130,10 +135,6 @@ while True:
         preco = get_last(pares[i])
         todosPares[i][1].insert(0,0)
         todosPares[i][1].pop(-1)
-        #todosPares[i][3].insert(0,0)
-        #todosPares[i][3].pop(-1)
-        #todosPares[i][4].insert(0,0)
-        #todosPares[i][4].pop(-1)
         todosPares[i][2].insert(0,0)
         todosPares[i][2].pop(-1)
         todosPares[i][5].insert(0,0)
@@ -143,7 +144,7 @@ while True:
 
         #Atualiza os valores para os cálculos
 
-        todosPares[i][0] = preco
+        todosPares[i][1][0] = preco
 
         dif = todosPares[i][1][0] - todosPares[i][1][1]
 
@@ -166,6 +167,6 @@ while True:
 
         dvalor = sum(todosPares[i][6][:3]) / 3
 
-        print ("Par:", todosPares[i][0], "Valor do K:", todosPares[i][6][0], "Valor do D:", dvalor)
+        print ("Par:", todosPares[i][0], "Valor do K:", round(todosPares[i][6][0],2), "Valor do D:", round(dvalor,2), todosPares[i][8])
 
         xsegundos = 901
