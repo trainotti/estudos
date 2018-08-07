@@ -176,6 +176,6 @@ while True:
         if (todosPares[i][6][0] < 20 and dvalor < 20):
             posicao = "Em posicao de entrada"
 
-        print ("Par:", todosPares[i][0], "Valor do K:", round(todosPares[i][6][0],2), "Valor do D:", round(dvalor,2))
+        print ("Par:", todosPares[i][0], "Valor do K:", round(todosPares[i][6][0],2), "Valor do D:", round(dvalor,2),posicao)
 
         xsegundos = 901
