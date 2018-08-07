@@ -49,7 +49,7 @@ referencia_watch = 0
 ############################################################
 
 
-with open('/home/user/estudos/simulacoes/'+par+'_KD.csv', newline ='') as csvfile:
+with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
     reader = csv.DictReader(csvfile)    
     for row in reader:
         data = int(row['data'])
