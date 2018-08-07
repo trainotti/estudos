@@ -47,7 +47,7 @@ referencia_watch = 0
 
 ############################################################
 
-with open('\Area de Trabalho\Controle Quant\simulacoes\IOTUSD1h.csv', newline ='') as csvfile, open('\Area de Trabalho\Controle Quant\simulacoes\saida.csv',"a",newline="") as fw:
+with open('/home/bot01/estudo/estudos/iotusdh.csv', newline ='') as csvfile, open('/home/bot01/estudo/estudos/saida.csv',"a",newline="") as fw:
     reader = csv.DictReader(csvfile)
     cw = csv.writer(fw,delimiter="\n")
     fieldnames = ['Data', 'Preco','Kvalor', 'Dvalor','Acao','Percentual']
