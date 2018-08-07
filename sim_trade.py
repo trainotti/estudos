@@ -34,8 +34,8 @@ hora_fim = "23:59:59"
 terminoepoch = int(time.mktime(time.strptime(data_fim[6:10]+"-"+data_fim[3:5]+"-"+data_fim[0:2]+" "+hora_fim, '%Y-%m-%d %H:%M:%S'))) - time.timezone
 limite_inferior = int(input("Digite o limite inferior da regiao do gain: "))
 limite_superior = int(input("Digite o limite superior da regiao do gain: "))
-start_gain = float(input("Digite o percentual para iniciar o gain - sem o símbolo %: "))/100
-stop_gain = float(input("Digite o percentual do recuo que para o gain - sem o símbolo %: "))/100
+start_gain = float(input("Digite o percentual para iniciar o gain - sem o simbolo %: "))/100
+stop_gain = float(input("Digite o percentual do recuo que para o gain - sem o simbolo %: "))/100
 stop_loss = float(input("Digite o percentual para STOP LOSS: "))/100
 percentual_compra = float(input("Digite o percentual para compra: "))/100
 print("\nIniciando Simulacao")
@@ -65,12 +65,12 @@ with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
             if (status == "watch" and kvalor < 20 and dvalor < 20):
                 flagbuy = "green"
                 status = "vendido"
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', 'desativa bandeira')
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', 'desativa bandeira')
 
             if (status == "vendido" and flagbuy == "green" and kvalor >= dvalor and dvalor > 20):
                 status = "watch"
                 referencia_watch = preco
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', 'ativação da bandeira')
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', 'ativacao da bandeira')
 
             if (status == "watch" and referencia_watch != 0 and preco/referencia_watch >= (1+percentual_compra)):
                 action = "compra"
@@ -80,7 +80,7 @@ with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
                 dvalorCompra = dvalor
                 flagbuy = "red"
                 status = "comprado"
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', action)
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', action)
 
             #START GAIN#
             if (flagsell == "red" and status == "comprado" and kvalor >= limite_inferior and kvalor <= limite_superior and preco/valor_compra >= (1+start_gain)):
