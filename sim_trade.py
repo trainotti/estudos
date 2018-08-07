@@ -29,7 +29,7 @@ print("Digite os parametros a serem usados\n")
 data_inicio = input("Digite a data de inicio (dd-mm-aaaa): ")
 hora_inicio = "00:00:00"
 inicioepoch = int(time.mktime(time.strptime(data_inicio[6:10]+"-"+data_inicio[3:5]+"-"+data_inicio[0:2]+" "+hora_inicio, '%Y-%m-%d %H:%M:%S'))) - time.timezone 
-data_fim = input("Digite a data de término (dd-mm-aaaa): ")
+data_fim = input("Digite a data de termino (dd-mm-aaaa): ")
 hora_fim = "00:00:00"
 terminoepoch = int(time.mktime(time.strptime(data_fim[6:10]+"-"+data_fim[3:5]+"-"+data_fim[0:2]+" "+hora_fim, '%Y-%m-%d %H:%M:%S'))) - time.timezone
 limite_inferior = int(input("Digite o limite inferior da região do gain: "))
@@ -38,7 +38,7 @@ start_gain = float(input("Digite o percentual para iniciar o gain - sem o símbo
 stop_gain = float(input("Digite o percentual do recuo que para o gain - sem o símbolo %: "))/100
 stop_loss = float(input("Digite o percentual para STOP LOSS: "))/100
 percentual_compra = float(input("Digite o percentual para compra: "))/100
-print("\nIniciando Simulação")
+print("\nIniciando Simulacao")
 saldo = 10000
 saldo_inicial = 10000
 referencia_watch = 0
@@ -86,7 +86,7 @@ with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
             if (flagsell == "red" and status == "comprado" and kvalor >= limite_inferior and kvalor <= limite_superior and preco/valor_compra >= (1+start_gain)):
                 flagsell = "green"
                 maximo_local = preco
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', 'inicio gain')
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', 'inicio gain')
 
             if (flagsell == "green" and preco > maximo_local):
                     maximo_local = preco
@@ -102,7 +102,7 @@ with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
                 percentual.append(preco/valor_compra)
                 flagsell = "red"
                 status = "vendido"
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', 'venda stop loss','Percentual',round(((preco/valor_compra)-1)*100,2))
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', 'venda stop loss','Percentual',round(((preco/valor_compra)-1)*100,2))
 
             #STOP GAIN#
             if (status == "comprado" and flagsell == "green" and preco/maximo_local <= (1-stop_gain)):
@@ -115,7 +115,7 @@ with open('/home/bot01/estudo/estudos/iotusd.csv', newline ='') as csvfile:
                 percentual.append(preco/valor_compra)
                 flagsell = "red"
                 status = "vendido"
-                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acão', 'venda stop gain','Percentual',round(((preco/valor_compra)-1)*100,2))
+                print('Data:', time.gmtime(data), 'Preco:', preco, 'Kvalor', round(kvalor,2), 'Dvalor', round(dvalor,2), 'Acao', 'venda stop gain','Percentual',round(((preco/valor_compra)-1)*100,2))
 
 mult = 1
 for x in percentual:
